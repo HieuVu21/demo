@@ -56,7 +56,7 @@ public class ClientManager {
         });
     }
 
-    public void sendToAClient (String username, String msg) {
+    public void  sendToAClient (String username, String msg) {
         clients.forEach((c) -> {
             if (c.getLoginUser().equals(username)) {
                 c.sendData(msg);

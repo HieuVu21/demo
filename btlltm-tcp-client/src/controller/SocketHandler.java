@@ -106,7 +106,7 @@ public class SocketHandler {
 
     public void acceptVideoCall(String userHost, String userInvited) {
         sendData("ACCEPT_VIDEO;" + userHost + ";" + userInvited);
-        startVideoStream(userInvited);
+//        startVideoStream(userInvited);
 //        startVideoStream2(userHost);
     }
 
@@ -154,7 +154,9 @@ public class SocketHandler {
         }
     }
 
-    private void startVideoStream(String recipient) {
+    private void
+
+    startVideoStream(String recipient) {
         try {
             initializeWebcam();
             isVideoCallActive.set(true);
@@ -377,8 +379,8 @@ public class SocketHandler {
     private void onReceiveVideoInvite(String received) {
         // Parse the received data
         String[] parts = received.split(";");
-        String sender = parts[1];
-        String receiver = parts[2];
+        String sender = parts[2];
+        String receiver = parts[3];
 
         SwingUtilities.invokeLater(() -> {
             int response = JOptionPane.showConfirmDialog(
@@ -400,7 +402,7 @@ public class SocketHandler {
 
     private void onReceiveVideoAccept(String received) {
         String[] parts = received.split(";");
-        String acceptingUser = parts[1];
+        String acceptingUser = parts[3];
         String callinguser = parts[2];
 
         SwingUtilities.invokeLater(() -> {
